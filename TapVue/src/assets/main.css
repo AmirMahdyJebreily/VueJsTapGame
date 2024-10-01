@@ -4,7 +4,10 @@
 
 @layer base {
   body {
-    @apply bg-neutral-800 w-screen h-screen overflow-auto
+    @apply bg-neutral-800 w-screen h-screen overflow-auto 
+  }
+  *{
+    @apply select-none
   }
   #app{
     @apply size-full

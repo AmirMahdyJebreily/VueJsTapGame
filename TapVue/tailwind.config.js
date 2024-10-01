@@ -9,6 +9,13 @@ export default {
     extend: {
       animation: {
         'ping-slow': 'ping 900ms cubic-bezier(0, 0, 0.2, 1) forwards',
+        'wiggle': 'wiggle 5s infinite 1s',
+      },
+      keyframes: {
+        wiggle: {
+          '0%, 100%': { transform: 'scale(1.02)' },
+          '50%': { transform: 'scale(0.980)'  },
+        }
       }
     },
   },
