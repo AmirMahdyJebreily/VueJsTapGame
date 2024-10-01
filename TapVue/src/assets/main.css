@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-neutral-800 w-screen h-screen overflow-auto
+  }
+  #app{
+    @apply size-full
+  }
+}
