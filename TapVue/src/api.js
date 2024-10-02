@@ -1,7 +1,11 @@
+import { ref } from "vue";
+
 const scoresKey = "scores"
 
-export function SendScoreToServer(score) {
-    window.localStorage.setItem(scoresKey, score)
+export const Scores = ref(GetScoreFromServer());
+
+export function SendScoreToServer() {
+    window.localStorage.setItem(scoresKey, Scores.value)
 }
 
 export function GetScoreFromServer() {

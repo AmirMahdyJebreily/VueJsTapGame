@@ -9,14 +9,7 @@ const start = ref(false)
 const randscale = ref(1)
 const grayClass = ref("grayscale")
 const emits = defineEmits(['ScoreAdded'])
-const props = defineProps({
-    Logo: String
-})
-const logos = shallowRef({
-    "vue": "Logo.svg",
-    "js": "JS Logo.svg",
-    "html": "HTML5 Logo.svg"
-})
+
 let lastw = 0
 
 async function TapHandle() {
