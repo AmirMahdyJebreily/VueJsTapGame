@@ -4,11 +4,11 @@ import Tapper from './components/Main/Tapper.vue';
 import { ref } from 'vue';
 
 const vueSores = ref(0)
+
 </script>
 
 <template>
-  <section class="size-full flex flex-col items-center justify-center">
-
+  <section class="size-full flex flex-col items-center justify-center relative">
     <header class="flex-none flex items-center justify-center py-6"> 
       <span class="score-badge">
         <img alt="Vue logo" class="size-6 grayscale opacity-75" src="@/assets/logo.svg" /> {{ vueSores }}
