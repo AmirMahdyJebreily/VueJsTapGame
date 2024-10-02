@@ -4,6 +4,8 @@ import TapperScore from "./Tapper.Score.vue";
 import { shallowRef } from "vue";
 
 const scores = ref([])
+const start = ref(false)
+
 const randscale = ref(1)
 const grayClass = ref("grayscale")
 const emits = defineEmits(['ScoreAdded'])
@@ -18,6 +20,7 @@ const logos = shallowRef({
 let lastw = 0
 
 async function TapHandle() {
+    start.value = true
     if (lastw <= 10) {
         if (scores.value.length > 80) {
             scores.value = []
@@ -49,7 +52,9 @@ async function TapHandle() {
         <TapperScore v-for="score in scores" :score="score" />
         <img alt="Vue logo" :class="`size-8/12 absolute pt-5 opacity-45 select-none ${grayClass}`"
             src="@/assets/Logo.svg"/>
+        <span v-if="!start" class="font-mono font-black text-lg absolute -bottom-10 text-neutral-300 z-50 animate-pulse">Tap On VueJS Icon !</span>
     </span>
+    
 </template>
 
 <style lang="postcss" scoped>

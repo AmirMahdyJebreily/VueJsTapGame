@@ -6,7 +6,7 @@ defineProps({
 })
 const acitve = ref(true)
 
-const sizeRand = (Math.random() * 51) + 144
+const sizeRand = (Math.random() * 31) + 124
 const paddingRand = (Math.random() * 48)  - 24
 setTimeout(() => {acitve.value = false}, 1000)
 </script>
