@@ -1,28 +1,41 @@
 <script setup>
 import { ref, nextTick } from "vue"
 import TapperScore from "./Tapper.Score.vue";
+import { shallowRef } from "vue";
 
 const scores = ref([])
 const randscale = ref(1)
+const grayClass = ref("grayscale")
 const emits = defineEmits(['ScoreAdded'])
+const props = defineProps({
+    Logo: String
+})
+const logos = shallowRef({
+    "vue": "Logo.svg",
+    "js": "JS Logo.svg",
+    "html": "HTML5 Logo.svg"
+})
 let lastw = 0
 
 async function TapHandle() {
-    if(lastw <= 10){
+    if (lastw <= 10) {
         if (scores.value.length > 80) {
             scores.value = []
         }
         lastw++
         scores.value.push(1)
-        
-        randscale.value = (Math.random() * 0.125) + 0.925
+
+        randscale.value = (Math.random() * 0.05) + 0.95
+        grayClass.value = "scale-95"
         await nextTick()
         emits("ScoreAdded", 1)
-        setTimeout(() => {
+        setTimeout(async () => {
             randscale.value = 1
+            await nextTick();
+            grayClass.value = "grayscale"
         }, 80)
     }
-    else{
+    else {
         lastw = 0
     }
 
@@ -34,13 +47,13 @@ async function TapHandle() {
 <template>
     <span class="logo-back" id="tapper" @click="TapHandle" :style="`transform: scale(${randscale})`">
         <TapperScore v-for="score in scores" :score="score" />
-        <img alt="Vue logo" class="size-8/12 absolute pt-5 opacity-60 bg-blend-overlay" src="@/assets/logo.svg" />
+        <img alt="Vue logo" :class="`size-8/12 absolute pt-5 opacity-45 select-none ${grayClass}`"
+            src="@/assets/Logo.svg"/>
     </span>
 </template>
 
 <style lang="postcss" scoped>
 .logo-back {
-    @apply border-2 border-neutral-900/30 backdrop-blur bg-gradient-to-t from-neutral-900 via-neutral-700/5 to-neutral-950/20 
-    relative size-52 rounded-full flex items-center justify-center transition-transform duration-75
+    @apply border-2 border-neutral-900/30 backdrop-blur bg-gradient-to-t from-neutral-900 via-neutral-700/5 to-neutral-950/20 relative size-52 rounded-full flex items-center justify-center transition-transform duration-75
 }
 </style>
