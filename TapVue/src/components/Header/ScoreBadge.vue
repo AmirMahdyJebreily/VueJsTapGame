@@ -1,14 +1,11 @@
 <script setup>
 import { Scores } from '@/api';
-
-
 </script>
 <template>
     <span class="score-badge">
         <img alt="Vue logo" class="size-6 grayscale opacity-75" src="@/assets/Logo.svg" /> {{ Scores }}
-       
     </span>
-    <p v-if="Scores > 200" class="text-emerald-500 font-mono animate-ping-slow">wow!</p>
+    <p v-if="Scores > 100" class="text-emerald-500 font-mono animate-ping-slow">wow!</p>
 </template>
 
 <style lang="postcss" scoped>
